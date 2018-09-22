@@ -1,6 +1,6 @@
 {
     "name": "tiny-neural-network",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "description": "simple implementation of a neural network",
     "main": "./build/index.js",
     "types": "lib/index.d.ts",
