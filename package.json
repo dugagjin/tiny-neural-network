@@ -1,0 +1,23 @@
+{
+    "name": "neural-network",
+    "version": "0.9.0",
+    "description": "simple implementation of a neural network",
+    "main": "./build/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "start": "node ./build/index",
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "execute": "tsc && node ./build/index"
+    },
+    "keywords": [
+        "neural-network",
+        "artificial-intelligence",
+        "ai"
+    ],
+    "author": "Dugagjin Lashi",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^10.10.3"
+    }
+}
