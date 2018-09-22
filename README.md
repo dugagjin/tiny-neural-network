@@ -1,5 +1,7 @@
 # tiny neural network
 
+Only 126 lines !
+
 ### installation
 
 ```bash
