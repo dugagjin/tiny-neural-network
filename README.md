@@ -32,10 +32,10 @@ Run the existing index file in the build folder.
 
 Compile and then run the project.
 
-### Author
+### author
 
 Dugagjin Lashi
 
-### License
+### license
 
 MIT
