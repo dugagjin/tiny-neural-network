@@ -20,7 +20,7 @@ export default class Neuron {
         this.learningRate = learningRate;
         this.weights = Array.from(
             { length: inputs },
-            () => Math.random() - 0.5
+            () => Math.random() * 2 - 1
         );
     }
 
