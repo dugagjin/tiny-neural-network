@@ -15,6 +15,10 @@
         "artificial-intelligence",
         "ai"
     ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dugagjin/tiny-neural-network.git"
+    },
     "author": "Dugagjin Lashi",
     "license": "MIT",
     "devDependencies": {
