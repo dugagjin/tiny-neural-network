@@ -1,6 +1,6 @@
 # tiny neural network
 
-Only 122 lines !
+Only 123 lines !
 
 ### installation
 
@@ -17,10 +17,10 @@ npm install --save tiny-neural-network
 import Network from 'tiny-neural-network';
 
 // how much to train
-const maxIterations = 1e5;
 // create a network with 2 input, 1 output and 3 layers of 6, 2 and 1 neuron
-const neuralNetwork = new Network([2, 6, 2, 1]);
 // xor dataset to learn
+const maxIterations = 1e5;
+const neuralNetwork = new Network([2, 6, 2, 1]);
 const xor = [
     { input: [0, 0], output: [0] },
     { input: [0, 1], output: [1] },
@@ -29,12 +29,12 @@ const xor = [
 ];
 
 // training loop
+// randomly select an input
+// capture result of what the network predicted
+// make the network learn from the error
 for (let i = 0; i < maxIterations; i++) {
-    // randomly select an input
     const select = Math.floor(Math.random() * xor.length);
-    // capture result of what the network predicted
     const result = neuralNetwork.predict(xor[select].input);
-    // make the network learn from the error
     neuralNetwork.learn(result, xor[select].output);
 }
 
@@ -56,7 +56,6 @@ Project was made with Node.JS v10.10.0 and TypeScript v3.0.3. Ulterior versions 
 ```bash
 git clone https://github.com/dugagjin/tiny-neural-network.git
 cd tiny-neural-network
-npm install
 ```
 
 #### `npm run build`
