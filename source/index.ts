@@ -1,1 +1,1 @@
-export { default as NeuralNetwork } from './network';
+export { default } from './network';
