@@ -1,6 +1,6 @@
 # tiny neural network
 
-Only 126 lines !
+Only 122 lines !
 
 ### installation
 
@@ -13,13 +13,13 @@ npm install --save tiny-neural-network
 #### xor
 
 ```ts
-// import the Neural Network and a helper function called subtract
-import { Network, subtract } from 'tiny-neural-network';
+// import the Neural Network
+import NeuralNetwork from 'tiny-neural-network';
 
 // how much to train
 const maxIterations = 1e5;
-// network with 2 input, 1 output and 3 layers of 6, 2 and 1 neuron
-const network = new Network([2, 6, 2, 1]);
+// create a network with 2 input, 1 output and 3 layers of 6, 2 and 1 neuron
+const neuralNetwork = new NeuralNetwork([2, 6, 2, 1]);
 // xor dataset to learn
 const xor = [
     { input: [0, 0], output: [0] },
@@ -33,17 +33,14 @@ for (let i = 0; i < maxIterations; i++) {
     // randomly select an input
     const select = Math.floor(Math.random() * xor.length);
     // capture result of what the network predicted
-    const result = network.predict(xor[select].input);
-    // use helper function to calculate the difference with what was expected
-    const error = subtract(result, xor[select].output);
-    // backpropagate the error and update the weights
-    network.backPropagation(error);
-    network.update();
+    const result = neuralNetwork.predict(xor[select].input);
+    // make the network learn from the error
+    neuralNetwork.learn(result, xor[select].output);
 }
 
 // after training create a table of all predictions and expectations
 // print the table on console
-const predictions = xor.map(({ input }) => network.predict(input));
+const predictions = xor.map(({ input }) => neuralNetwork.predict(input));
 const expectations = xor.map(({ output }) => output);
 const table = predictions.map((prediction, i) => ({
     prediction,

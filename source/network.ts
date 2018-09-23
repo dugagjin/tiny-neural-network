@@ -1,4 +1,5 @@
 import Layer from './layer';
+import { subtract } from './helpers';
 
 export default class Network {
     private readonly layers: Layer[];
@@ -32,20 +33,15 @@ export default class Network {
 
     /**
      * Backpropagates the errors of each neuron of each layer.
+     * Update the weights of each neuron in each layer according the error.
      * @param error difference outputs and expected outputs
      * @returns scalar product of weights and error for each layer
      */
-    public backPropagation(errors: number[]): void {
+    public learn(prediction: number[], expectation: number[]): void {
+        const errors = subtract(prediction, expectation);
         this.layers
             .reverse()
             .reduce((error, layer) => layer.backPropagation(error), errors);
-        this.layers.reverse();
-    }
-
-    /**
-     * Update the weights of each neuron in each layer according the error.
-     */
-    public update(): void {
-        this.layers.forEach(layer => layer.update());
+        this.layers.reverse().forEach(layer => layer.update());
     }
 }
