@@ -18,6 +18,7 @@ import Network from 'tiny-neural-network';
 
 // how much to train
 // create a network with 2 input, 1 output and 3 layers of 6, 2 and 1 neuron
+// The network class has 'learningRate' as second argument with default value of 0.1.
 // xor dataset to learn
 const maxIterations = 1e5;
 const neuralNetwork = new Network([2, 6, 2, 1]);
