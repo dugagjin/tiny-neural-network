@@ -1,9 +1,9 @@
 {
     "name": "tiny-neural-network",
-    "version": "0.9.5",
+    "version": "0.9.8",
     "description": "simple implementation of a neural network",
     "main": "./build/index.js",
-    "types": "lib/index.d.ts",
+    "types": "./build/index.d.ts",
     "scripts": {
         "start": "node ./build/index",
         "build": "tsc",
@@ -20,8 +20,5 @@
         "url": "git+https://github.com/dugagjin/tiny-neural-network.git"
     },
     "author": "Dugagjin Lashi",
-    "license": "MIT",
-    "devDependencies": {
-        "@types/node": "^10.10.3"
-    }
+    "license": "MIT"
 }
