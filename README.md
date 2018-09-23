@@ -14,12 +14,12 @@ npm install --save tiny-neural-network
 
 ```ts
 // import the Neural Network
-import NeuralNetwork from 'tiny-neural-network';
+import Network from 'tiny-neural-network';
 
 // how much to train
 const maxIterations = 1e5;
 // create a network with 2 input, 1 output and 3 layers of 6, 2 and 1 neuron
-const neuralNetwork = new NeuralNetwork([2, 6, 2, 1]);
+const neuralNetwork = new Network([2, 6, 2, 1]);
 // xor dataset to learn
 const xor = [
     { input: [0, 0], output: [0] },
