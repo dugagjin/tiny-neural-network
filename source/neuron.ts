@@ -1,4 +1,4 @@
-import { sigmoid, sigmoidDerivative } from './functions';
+import { tanh, tanhDerivative } from './functions';
 import { sum, multiply, subtract } from './helpers';
 
 export default class Neuron {
@@ -32,7 +32,7 @@ export default class Neuron {
     public predict(input: number[]): number {
         this.input = input;
         this.output = sum(multiply(input, this.weights));
-        return sigmoid(this.output);
+        return tanh(this.output);
     }
 
     /**
@@ -52,7 +52,7 @@ export default class Neuron {
         const deltas = this.input.map(
             input =>
                 input *
-                sigmoidDerivative(this.output) *
+                tanhDerivative(this.output) *
                 this.error *
                 this.learningRate
         );
