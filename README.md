@@ -23,7 +23,7 @@ import Network from 'tiny-neural-network';
 // The network class has 'learningRate' as second argument with default value of 0.1.
 // xor dataset to learn
 const maxIterations = 1e5;
-const neuralNetwork = new Network([2, 6, 2, 1]);
+const neuralNetwork = new Network([2, 3, 1]);
 const xor = [
     { input: [0, 0], output: [0] },
     { input: [0, 1], output: [1] },
@@ -43,24 +43,65 @@ for (let i = 0; i < maxIterations; i++) {
 
 // after training create a table of all predictions and expectations
 // print the table on console
-const predictions = xor.map(({ input }) => neuralNetwork.predict(input));
-const expectations = xor.map(({ output }) => output);
-const table = predictions.map((prediction, i) => ({
-    prediction,
-    expectation: expectations[i]
+const table = xor.map(({ input, output }) => ({
+    prediction: neuralNetwork.predict(input),
+    expectation: output
 }));
 console.table(table);
 ```
 
-The more the network overfit the data, the better for the XOR example.
-But in case you want to predict unknown data then more learning is not always better.
-Here is a an example that I have generated:
+In this case, the more the network learns, the better the XOR prediction. This is because there is no unknown data to predict. In case you want to predict unknown data then more learning is not always better. Here is a an example that I have generated to demonstrate it:
 
 ![](https://i.imgur.com/yHJ71SX.gif)
 
-The goal was to learn the sine wave using 20 evenly spaced points.
-It starts with 20 iterations and goes up to 20e7 with a increase of times 10.
-You can see that the best prediction is around 20e4 - 20e5 iterations and that the two last ones (20e6 and 20e7) are garbage.
+The goal was to learn the sine wave using 20 evenly spaced points. The GIF starts with 20 iterations and goes up to 20e7 with a increase of factor 10.
+The best prediction is around 20e4 - 20e5 iterations and the two last ones (20e6 and 20e7) are garbage.
+
+#### mnist
+
+Mnist is a data set of handwriting. The objective is to learn recognize digits and then predict digits that the network hasn't seen before. First install the mnist data set:
+
+```bash
+npm install --save small-mnist
+```
+
+Then code the magic:
+
+```typescript
+// import this lib and the a small version of mnist
+import Network from 'tiny-neural-network';
+import { test, train } from 'small-mnist';
+
+// define training length and network
+// 400 inputs because of 400 pixels,
+// 200 neurons for first layers and 10 neurons for output
+const maxIterations = 1e4;
+const neuralNetwork = new Network([400, 200, 10]);
+
+// train
+for (let i = 0; i < maxIterations; i++) {
+    const select = Math.floor(Math.random() * train.length);
+    const result = neuralNetwork.predict(train[select].input);
+    neuralNetwork.learn(result, train[select].output);
+}
+
+// benchmark en format results to show in a table
+// will print a table of only failed
+// the test set has 100 elements so if 10 are printed the performance is 90%
+const table = test
+    .map(({ input, label }) => {
+        return {
+            prediction: neuralNetwork
+                .predict(input)
+                .reduce((a, v, i, arr) => (v > arr[a] ? i : a), 0),
+            expectation: label
+        };
+    })
+    .filter(({ expectation, prediction }) => expectation !== prediction);
+console.table(table);
+```
+
+This should take 1-2 min to train in order to have an accuracy above ~85%.
 
 ### develop
 
