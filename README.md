@@ -1,6 +1,6 @@
 # tiny neural network
 
-Only 123 lines !
+Only 123 lines and ~ 1 kB gzipped !
 
 ### installation
 
@@ -9,6 +9,8 @@ npm install --save tiny-neural-network
 ```
 
 ### examples
+
+The neural network works with values between -1 and 1.
 
 #### xor
 
@@ -49,6 +51,16 @@ const table = predictions.map((prediction, i) => ({
 }));
 console.table(table);
 ```
+
+The more the network overfit the data, the better for the XOR example.
+But in case you want to predict unknown data then more learning is not always better.
+Here is a an example that I have generated:
+
+![](https://i.imgur.com/yHJ71SX.gif)
+
+The goal was to learn the sine wave using 20 evenly spaced points.
+It starts with 20 iterations and goes up to 20e7 with a increase of times 10.
+You can see that the best prediction is around 20e4 - 20e5 iterations and that the two last ones (20e6 and 20e7) are garbage.
 
 ### develop
 
