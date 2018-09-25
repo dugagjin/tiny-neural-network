@@ -2,17 +2,17 @@
 
 Only 123 lines and ~ 1 kB gzipped !
 
-### installation
+## installation
 
 ```bash
 npm install --save tiny-neural-network
 ```
 
-### examples
+## examples
 
 The neural network works with values between -1 and 1.
 
-#### xor
+### xor
 
 ```ts
 // import the Neural Network
@@ -57,7 +57,7 @@ In this case, the more the network learns, the better the XOR prediction. This i
 The goal was to learn the sine wave using 20 evenly spaced points. The GIF starts with 20 iterations and goes up to 20e7 with a increase of factor 10.
 The best prediction is around 20e4 - 20e5 iterations and the two last ones (20e6 and 20e7) are garbage.
 
-#### mnist
+### mnist
 
 Mnist is a data set of handwriting. The objective is to learn recognize digits and then predict digits that the network hasn't seen before. First install the mnist data set:
 
@@ -103,7 +103,7 @@ console.table(table);
 
 This should take 1-2 min to train in order to have an accuracy above ~85%.
 
-### develop
+## develop
 
 Project was made with Node.JS v10.10.0 and TypeScript v3.0.3. Ulterior versions may work but are not guaranteed.
 
@@ -112,22 +112,22 @@ git clone https://github.com/dugagjin/tiny-neural-network.git
 cd tiny-neural-network
 ```
 
-#### `npm run build`
+### `npm run build`
 
 Compile the project in build folder.
 
-#### `npm start`
+### `npm start`
 
 Run the existing index file in the build folder.
 
-#### `npm run execute`
+### `npm run execute`
 
 Compile and then run the project.
 
-### author
+## author
 
 Dugagjin Lashi
 
-### license
+## license
 
 MIT
