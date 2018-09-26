@@ -59,6 +59,8 @@ The best prediction is at 20e4 iterations and the two last ones (20e5 and 20e6) 
 
 ### mnist
 
+![](https://tensorflow.rstudio.com/tensorflow/articles/images/MNIST.png)
+
 Mnist is a data set of handwriting. The objective is to learn recognize digits and then predict digits that the network hasn't seen before. First install the mnist data set:
 
 ```bash
