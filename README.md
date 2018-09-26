@@ -1,6 +1,6 @@
 # tiny neural network
 
-Only 123 lines and ~ 1 kB gzipped !
+Only 123 lines and ~1 kB gzipped !
 
 ## installation
 
@@ -19,7 +19,7 @@ The neural network works with values between -1 and 1.
 import Network from 'tiny-neural-network';
 
 // how much to train
-// create a network with 2 input, 1 output and 3 layers of 6, 2 and 1 neuron
+// create a network with 2 input, 1 output and 2 layers of 3 and 1 neuron
 // The network class has 'learningRate' as second argument with default value of 0.1.
 // xor dataset to learn
 const maxIterations = 1e5;
@@ -52,10 +52,10 @@ console.table(table);
 
 In this case, the more the network learns, the better the XOR prediction. This is because there is no unknown data to predict. In case you want to predict unknown data then more learning is not always better. Here is a an example that I have generated to demonstrate it:
 
-![](https://i.imgur.com/yHJ71SX.gif)
+![](http://image.noelshack.com/fichiers/2018/39/3/1537963119-webp-net-gifmaker.gif)
 
-The goal was to learn the sine wave using 20 evenly spaced points. The GIF starts with 20 iterations and goes up to 20e7 with a increase of factor 10.
-The best prediction is around 20e4 - 20e5 iterations and the two last ones (20e6 and 20e7) are garbage.
+The goal was to learn the sine wave using 20 evenly spaced points. The GIF starts with 20 iterations and goes up to 20e6 with a increase of factor 10.
+The best prediction is at 20e4 iterations and the two last ones (20e5 and 20e6) are garbage.
 
 ### mnist
 
@@ -89,14 +89,12 @@ for (let i = 0; i < maxIterations; i++) {
 // will print a table of only failed
 // the test set has 100 elements so if 10 are printed the performance is 90%
 const table = test
-    .map(({ input, label }) => {
-        return {
-            prediction: neuralNetwork
-                .predict(input)
-                .reduce((a, v, i, arr) => (v > arr[a] ? i : a), 0),
-            expectation: label
-        };
-    })
+    .map(({ input, label }) => ({
+        prediction: neuralNetwork
+            .predict(input)
+            .reduce((a, v, i, arr) => (v > arr[a] ? i : a), 0),
+        expectation: label
+    }))
     .filter(({ expectation, prediction }) => expectation !== prediction);
 console.table(table);
 ```
