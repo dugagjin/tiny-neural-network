@@ -12,7 +12,12 @@
         "noImplicitAny": true,
         "strictNullChecks": true,
         "noUnusedLocals": true,
-        "declaration": true
+        "declaration": true,
+        "diagnostics": true,
+        "noUnusedParameters": true,
+        "removeComments": true,
+        "strictPropertyInitialization": true,
+        "strictFunctionTypes": true
     },
     "exclude": ["node_modules", "build"]
 }
