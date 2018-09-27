@@ -1,5 +1,7 @@
 # tiny neural network
 
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/dugagjin/tiny-neural-network.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/dugagjin/tiny-neural-network/context:javascript)
+
 Only 123 lines and ~1 kB gzipped !
 
 ## installation
