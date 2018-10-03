@@ -131,7 +131,7 @@ const epochs = 10;
 const nn = new Network([10, 200, 400]);
 
 // generic shuffle function so that the network does not learn the sequence
-function shuffle<T>(array: T[]) {
+function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -196,4 +196,3 @@ Dugagjin Lashi
 ## license
 
 MIT
-````
