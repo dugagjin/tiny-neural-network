@@ -118,7 +118,7 @@ This should take 1-2 min to train in order to have an accuracy above ~85%.
 
 We can also do the inverse, make the network learn to write numbers (Node.JS only due pixel draw on terminal):
 
-````typescript
+```typescript
 // import this lib and the a small version of mnist
 import Network from 'tiny-neural-network';
 import { train } from 'small-mnist';
