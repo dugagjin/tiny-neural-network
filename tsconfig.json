@@ -9,13 +9,15 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
-    "lib": ["es2022"],
 
     /* Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
+
+    /* If transpiling with TypeScript: */
     "module": "Preserve",
+    "lib": ["es2022"],
     "noEmit": true
   }
 }
