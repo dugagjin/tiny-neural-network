@@ -13,7 +13,7 @@ export default class Network {
   constructor(size: number[], learningRate = 0.1) {
     this.layers = [];
     for (let i = 0; i < size.length - 1; i++) {
-      const layer = new Layer(size[i + 1], size[i] + 1, learningRate);
+      const layer = new Layer(size[i + 1]!, size[i]! + 1, learningRate);
       this.layers.push(layer);
     }
   }

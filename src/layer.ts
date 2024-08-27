@@ -32,7 +32,7 @@ export default class Layer {
    */
   public backPropagation(errors: number[]): number[] {
     return this.neurons
-      .map((neuron, i) => neuron.backPropagation(errors[i]))
+      .map((neuron, i) => neuron.backPropagation(errors[i]!))
       .reduce(add);
   }
 

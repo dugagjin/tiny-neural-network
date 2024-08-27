@@ -15,7 +15,7 @@ function errorIfEmpty<T>(...arrays: T[][]): void {
  * @returns void
  */
 function errorIfNotEqual<T>(...arrays: T[][]): void {
-  const length = arrays[0].length;
+  const length = arrays[0]!.length;
   if (arrays.some((arr) => arr.length !== length)) {
     throw new Error(`Arrays length are not equal.`);
   }
@@ -30,7 +30,7 @@ function errorIfNotEqual<T>(...arrays: T[][]): void {
 export function add(arr1: number[], arr2: number[]): number[] {
   errorIfEmpty(arr1, arr2);
   errorIfNotEqual(arr1, arr2);
-  return arr1.map((n, i) => n + arr2[i]);
+  return arr1.map((n, i) => n + arr2[i]!);
 }
 
 /**
@@ -42,7 +42,7 @@ export function add(arr1: number[], arr2: number[]): number[] {
 export function subtract(arr1: number[], arr2: number[]): number[] {
   errorIfEmpty(arr1, arr2);
   errorIfNotEqual(arr1, arr2);
-  return arr1.map((n, i) => n - arr2[i]);
+  return arr1.map((n, i) => n - arr2[i]!);
 }
 
 /**
@@ -54,7 +54,7 @@ export function subtract(arr1: number[], arr2: number[]): number[] {
 export function multiply(arr1: number[], arr2: number[]): number[] {
   errorIfEmpty(arr1, arr2);
   errorIfNotEqual(arr1, arr2);
-  return arr1.map((n, i) => n * arr2[i]);
+  return arr1.map((n, i) => n * arr2[i]!);
 }
 
 /**
