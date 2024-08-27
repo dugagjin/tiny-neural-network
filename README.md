@@ -27,10 +27,10 @@ import Network from 'tiny-neural-network';
 const maxIterations = 1e5;
 const neuralNetwork = new Network([2, 3, 1]);
 const xor = [
-    { input: [0, 0], output: [0] },
-    { input: [0, 1], output: [1] },
-    { input: [1, 0], output: [1] },
-    { input: [1, 1], output: [0] }
+  { input: [0, 0], output: [0] },
+  { input: [0, 1], output: [1] },
+  { input: [1, 0], output: [1] },
+  { input: [1, 1], output: [0] },
 ];
 
 // training loop
@@ -38,16 +38,16 @@ const xor = [
 // capture result of what the network predicted
 // make the network learn from the error
 for (let i = 0; i < maxIterations; i++) {
-    const select = Math.floor(Math.random() * xor.length);
-    const result = neuralNetwork.predict(xor[select].input);
-    neuralNetwork.learn(result, xor[select].output);
+  const select = Math.floor(Math.random() * xor.length);
+  const result = neuralNetwork.predict(xor[select].input);
+  neuralNetwork.learn(result, xor[select].output);
 }
 
 // after training create a table of all predictions and expectations
 // print the table on console
 const table = xor.map(({ input, output }) => ({
-    prediction: neuralNetwork.predict(input),
-    expectation: output
+  prediction: neuralNetwork.predict(input),
+  expectation: output,
 }));
 console.table(table);
 ```
@@ -86,31 +86,31 @@ const nn = new Network([400, 200, 10]);
 // since we are working with epochs we need
 // a generic shuffle function so that the network does not learn the sequence
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 // train
 for (let i = 0; i < epochs; i++) {
-    shuffle(train);
-    train.forEach(({ input, output }) => nn.learn(nn.predict(input), output));
-    console.log(`epoch: ${i}`);
+  shuffle(train);
+  train.forEach(({ input, output }) => nn.learn(nn.predict(input), output));
+  console.log(`epoch: ${i}`);
 }
 
 // benchmark en format results to show in a table
 // will print a table of only failed
 // the test set has 100 elements so if 10 are printed the performance is 90%
 console.table(
-    test
-        .map(({ input, label }) => ({
-            prediction: nn
-                .predict(input)
-                .reduce((a, v, i, arr) => (v > arr[a] ? i : a), 0),
-            expectation: label
-        }))
-        .filter(({ expectation, prediction }) => expectation !== prediction)
+  test
+    .map(({ input, label }) => ({
+      prediction: nn
+        .predict(input)
+        .reduce((a, v, i, arr) => (v > arr[a] ? i : a), 0),
+      expectation: label,
+    }))
+    .filter(({ expectation, prediction }) => expectation !== prediction),
 );
 ```
 
@@ -132,17 +132,17 @@ const nn = new Network([10, 200, 400]);
 
 // generic shuffle function so that the network does not learn the sequence
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 // train
 for (let i = 0; i < epochs; i++) {
-    shuffle(train);
-    train.forEach(({ input, output }) => nn.learn(nn.predict(output), input));
-    console.log(`epoch: ${i}`);
+  shuffle(train);
+  train.forEach(({ input, output }) => nn.learn(nn.predict(output), input));
+  console.log(`epoch: ${i}`);
 }
 
 // quick and dirty way to test the drawing skills of the network
@@ -150,22 +150,22 @@ for (let i = 0; i < epochs; i++) {
 // draw black for each pixel having value < 0.5 otherwise draw white.
 // canvas is 20x20 thus new line at each 20 pixels.
 Array.from(Array(10).keys())
-    .map(key => ({
-        input: Array.from(Array(10)).map((_, i) => (i === key ? 1 : 0)),
-        expected: key
-    }))
-    .map(({ input, expected }) => {
-        const predicted = nn.predict(input);
-        const white = '\x1b[47m\x1b[37m__';
-        const black = '\x1b[40m\x1b[30m__';
-        const clear = '\x1b[0m';
-        predicted.forEach((e, i) => {
-            const pixel = e > 0.5 ? white : black;
-            const newLines = i % 20 === 0 ? '\n' : '';
-            stdout.write(`${newLines}${pixel}${clear}`);
-        });
-        console.log(expected);
+  .map((key) => ({
+    input: Array.from(Array(10)).map((_, i) => (i === key ? 1 : 0)),
+    expected: key,
+  }))
+  .map(({ input, expected }) => {
+    const predicted = nn.predict(input);
+    const white = '\x1b[47m\x1b[37m__';
+    const black = '\x1b[40m\x1b[30m__';
+    const clear = '\x1b[0m';
+    predicted.forEach((e, i) => {
+      const pixel = e > 0.5 ? white : black;
+      const newLines = i % 20 === 0 ? '\n' : '';
+      stdout.write(`${newLines}${pixel}${clear}`);
     });
+    console.log(expected);
+  });
 ```
 
 ## develop

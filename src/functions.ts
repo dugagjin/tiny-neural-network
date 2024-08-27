@@ -3,7 +3,7 @@
  * @param z input value
  */
 export function sigmoid(z: number): number {
-    return 1 / (1 + Math.exp(z * -1));
+  return 1 / (1 + Math.exp(z * -1));
 }
 
 /**
@@ -12,5 +12,5 @@ export function sigmoid(z: number): number {
  * @param z input value
  */
 export function sigmoidDerivative(z: number): number {
-    return sigmoid(z) * (1 - sigmoid(z));
+  return sigmoid(z) * (1 - sigmoid(z));
 }

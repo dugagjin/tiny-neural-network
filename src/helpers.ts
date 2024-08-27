@@ -3,9 +3,9 @@
  * @param arrays one or more arrays.
  */
 function errorIfEmpty<T>(...arrays: T[][]): void {
-    if (arrays.some(arr => arr.length === 0)) {
-        throw new Error(`Array is empty.`);
-    }
+  if (arrays.some((arr) => arr.length === 0)) {
+    throw new Error(`Array is empty.`);
+  }
 }
 
 /**
@@ -15,10 +15,10 @@ function errorIfEmpty<T>(...arrays: T[][]): void {
  * @returns void
  */
 function errorIfNotEqual<T>(...arrays: T[][]): void {
-    const length = arrays[0].length;
-    if (arrays.some(arr => arr.length !== length)) {
-        throw new Error(`Arrays length are not equal.`);
-    }
+  const length = arrays[0].length;
+  if (arrays.some((arr) => arr.length !== length)) {
+    throw new Error(`Arrays length are not equal.`);
+  }
 }
 
 /**
@@ -28,9 +28,9 @@ function errorIfNotEqual<T>(...arrays: T[][]): void {
  * @returns result of adding both arrays
  */
 export function add(arr1: number[], arr2: number[]): number[] {
-    errorIfEmpty(arr1, arr2);
-    errorIfNotEqual(arr1, arr2);
-    return arr1.map((n, i) => n + arr2[i]);
+  errorIfEmpty(arr1, arr2);
+  errorIfNotEqual(arr1, arr2);
+  return arr1.map((n, i) => n + arr2[i]);
 }
 
 /**
@@ -40,9 +40,9 @@ export function add(arr1: number[], arr2: number[]): number[] {
  * @returns Subtracted result of both arrays
  */
 export function subtract(arr1: number[], arr2: number[]): number[] {
-    errorIfEmpty(arr1, arr2);
-    errorIfNotEqual(arr1, arr2);
-    return arr1.map((n, i) => n - arr2[i]);
+  errorIfEmpty(arr1, arr2);
+  errorIfNotEqual(arr1, arr2);
+  return arr1.map((n, i) => n - arr2[i]);
 }
 
 /**
@@ -52,9 +52,9 @@ export function subtract(arr1: number[], arr2: number[]): number[] {
  * @returns Multiplied result of both arrays
  */
 export function multiply(arr1: number[], arr2: number[]): number[] {
-    errorIfEmpty(arr1, arr2);
-    errorIfNotEqual(arr1, arr2);
-    return arr1.map((n, i) => n * arr2[i]);
+  errorIfEmpty(arr1, arr2);
+  errorIfNotEqual(arr1, arr2);
+  return arr1.map((n, i) => n * arr2[i]);
 }
 
 /**
@@ -62,6 +62,6 @@ export function multiply(arr1: number[], arr2: number[]): number[] {
  * @param arr array of numbers
  */
 export function sum(arr: number[]): number {
-    errorIfEmpty(arr);
-    return arr.reduce((total, number) => total + number);
+  errorIfEmpty(arr);
+  return arr.reduce((total, number) => total + number);
 }
